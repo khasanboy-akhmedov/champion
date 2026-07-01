@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHAMPION — Eркаклик қувватини тиклаш учун №1 табиий комплекс</title>
+<meta name="description" content="CHAMPION — 30 дақиқада натижа, юракка зарарсиз, 100% табиий таркиб. Дорихоналардаги устама нархларсиз, ишлаб чиқарувчидан тўғридан-тўғри.">
+<style>
+  :root {
+    --bg-dark: #08091A;
+    --bg-dark2: #0D1128;
+    --bg-soft: #F5F6FA;
+    --bg-white: #FFFFFF;
+    --ink: #0F1320;
+    --sub: #5E6678;
+    --accent: #D4A017;
+    --accent2: #F0C040;
+    --green: #1DB954;
+    --red: #E53935;
+    --gold: linear-gradient(135deg, #D4A017, #F0C040, #D4A017);
+    --radius: 16px;
+    --shadow: 0 8px 40px rgba(0,0,0,0.13);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+    background: var(--bg-white);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(8,9,26,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(212,160,23,0.18);
+    padding: 14px 20px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-size: 22px; font-weight: 800; letter-spacing: 0.08em;
+    background: var(--gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .nav-cta {
+    background: var(--gold);
+    color: #08091A; font-weight: 700; font-size: 13px;
+    border: none; border-radius: 50px; padding: 10px 22px;
+    cursor: pointer; text-decoration: none; white-space: nowrap;
+    transition: opacity 0.2s;
+  }
+  .nav-cta:hover { opacity: 0.88; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--bg-dark);
+    padding: 100px 20px 70px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -20%; left: 30%; transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212,160,23,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1060px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 48px; align-items: center;
+  }
+  .hero-text { text-align: left; }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(212,160,23,0.15);
+    border: 1px solid rgba(212,160,23,0.4);
+    color: var(--accent2);
+    font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 7px 18px; border-radius: 50px; margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: clamp(28px, 4.2vw, 52px);
+    font-weight: 800; line-height: 1.08;
+    letter-spacing: -0.025em;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+  }
+  .hero h1 span {
+    background: var(--gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-sub {
+    font-size: clamp(15px, 1.8vw, 18px);
+    color: rgba(255,255,255,0.65);
+    max-width: 480px;
+    margin-bottom: 36px;
+    line-height: 1.6;
+  }
+  .hero-ctas {
+    display: flex; flex-wrap: wrap; gap: 14px;
+    margin-bottom: 44px;
+  }
+  /* Hero product image */
+  .hero-img-wrap {
+    position: relative;
+  }
+  .hero-img-wrap img {
+    width: 100%; border-radius: 24px;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(212,160,23,0.15);
+    display: block;
+    object-fit: cover;
+  }
+  .hero-img-badge {
+    position: absolute; bottom: 20px; left: 20px;
+    background: rgba(8,9,26,0.88);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(212,160,23,0.3);
+    border-radius: 12px; padding: 12px 16px;
+  }
+  .hero-img-badge span {
+    display: block; font-size: 11px; color: rgba(255,255,255,0.5); margin-bottom: 3px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .hero-img-badge strong {
+    font-size: 15px; color: var(--accent2);
+  }
+  @media (max-width: 860px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 36px; }
+    .hero-text { text-align: center; }
+    .hero-sub { margin: 0 auto 36px; }
+    .hero-ctas { justify-content: center; }
+    .hero-img-wrap { max-width: 340px; margin: 0 auto; }
+  }
+  .btn-gold {
+    background: var(--gold);
+    color: #08091A; font-weight: 800; font-size: 16px;
+    border: none; border-radius: 50px; padding: 16px 38px;
+    cursor: pointer; text-decoration: none;
+    box-shadow: 0 6px 28px rgba(212,160,23,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: inline-block;
+  }
+  .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 36px rgba(212,160,23,0.5); }
+  .btn-ghost {
+    background: transparent;
+    color: rgba(255,255,255,0.75); font-size: 15px; font-weight: 600;
+    border: 1.5px solid rgba(255,255,255,0.22); border-radius: 50px;
+    padding: 16px 32px; cursor: pointer; text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+  .btn-ghost:hover { border-color: rgba(212,160,23,0.5); color: var(--accent2); }
+
+  .hero-trust {
+    display: flex; flex-wrap: wrap; gap: 20px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 28px;
+  }
+  .trust-item {
+    display: flex; align-items: center; gap: 10px;
+    color: rgba(255,255,255,0.7); font-size: 14px;
+  }
+  .trust-icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(212,160,23,0.15);
+    border: 1px solid rgba(212,160,23,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+  }
+
+  /* ── COUNTDOWN ── */
+  .countdown-bar {
+    background: linear-gradient(90deg, #8B0000, #C0392B);
+    padding: 14px 20px;
+    text-align: center;
+    color: #fff;
+    font-size: 14px; font-weight: 600;
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    flex-wrap: wrap;
+  }
+  .countdown-timer {
+    display: flex; gap: 8px; align-items: center;
+  }
+  .timer-block {
+    background: rgba(0,0,0,0.35); border-radius: 8px;
+    padding: 4px 10px; font-size: 20px; font-weight: 800;
+    min-width: 46px; text-align: center;
+  }
+  .timer-sep { font-size: 18px; font-weight: 800; opacity: 0.7; }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: 72px 20px; }
+  .container { max-width: 1060px; margin: 0 auto; }
+  .section-badge {
+    display: inline-block;
+    background: rgba(212,160,23,0.1);
+    border: 1px solid rgba(212,160,23,0.3);
+    color: var(--accent);
+    font-size: 11px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase;
+    padding: 6px 16px; border-radius: 50px; margin-bottom: 16px;
+  }
+  .section-badge.dark {
+    background: rgba(212,160,23,0.15);
+    border-color: rgba(212,160,23,0.35);
+    color: var(--accent2);
+  }
+  h2 {
+    font-size: clamp(26px, 4vw, 42px);
+    font-weight: 800; line-height: 1.1;
+    letter-spacing: -0.022em;
+    margin-bottom: 16px;
+  }
+  .lead { font-size: 17px; color: var(--sub); line-height: 1.65; max-width: 580px; }
+
+  /* ── STATS ROW ── */
+  .stats-dark {
+    background: var(--bg-dark2);
+    padding: 60px 20px;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2px;
+  }
+  .stat-item {
+    padding: 36px 24px; text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.06);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-size: clamp(36px, 5vw, 58px);
+    font-weight: 800; line-height: 1;
+    background: var(--gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+  .stat-label { color: rgba(255,255,255,0.55); font-size: 14px; line-height: 1.45; }
+
+  /* ── PROBLEM ── */
+  .problem { background: var(--bg-soft); }
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px; margin-top: 48px;
+  }
+  .problem-card {
+    background: var(--bg-white);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    border-left: 4px solid var(--red);
+    box-shadow: var(--shadow);
+  }
+  .problem-card .emoji { font-size: 28px; margin-bottom: 14px; }
+  .problem-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+  .problem-card p { font-size: 14px; color: var(--sub); line-height: 1.6; }
+
+  /* ── PRODUCT ── */
+  .product-sec { background: var(--bg-dark); padding: 80px 20px; }
+  .product-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px; align-items: center;
+  }
+  .product-img-wrap {
+    display: flex; justify-content: center;
+  }
+  .product-mockup {
+    width: 100%; max-width: 340px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 80px rgba(212,160,23,0.2), 0 0 0 1px rgba(212,160,23,0.15);
+    border: 1px solid rgba(212,160,23,0.2);
+  }
+  .product-mockup img {
+    width: 100%; height: auto; display: block;
+  }
+  /* Product photo gallery */
+  .product-gallery {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px; margin-top: 40px;
+  }
+  .product-gallery img {
+    width: 100%; border-radius: 14px;
+    aspect-ratio: 3/4; object-fit: cover;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+    border: 1px solid rgba(212,160,23,0.15);
+    transition: transform 0.25s;
+  }
+  .product-gallery img:hover { transform: scale(1.03); }
+  .product-content h2 { color: #fff; margin-bottom: 14px; }
+  .product-content .lead { color: rgba(255,255,255,0.6); }
+  .product-features { margin-top: 36px; display: flex; flex-direction: column; gap: 18px; }
+  .feat-row {
+    display: flex; align-items: flex-start; gap: 16px;
+  }
+  .feat-icon {
+    width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+    background: rgba(212,160,23,0.12);
+    border: 1px solid rgba(212,160,23,0.25);
+    display: flex; align-items: center; justify-content: center; font-size: 20px;
+  }
+  .feat-text h4 { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .feat-text p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+
+  /* ── COMPARISON ── */
+  .comparison-sec { background: var(--bg-soft); }
+  .comp-table {
+    width: 100%; border-collapse: collapse;
+    border-radius: var(--radius); overflow: hidden;
+    margin-top: 40px;
+    box-shadow: var(--shadow);
+  }
+  .comp-table thead tr { background: var(--bg-dark); }
+  .comp-table th {
+    padding: 18px 20px; text-align: center;
+    font-size: 15px; font-weight: 700;
+    color: rgba(255,255,255,0.7);
+  }
+  .comp-table th:first-child { text-align: left; color: rgba(255,255,255,0.5); }
+  .comp-table th.champion-col {
+    background: rgba(212,160,23,0.18);
+    color: var(--accent2);
+  }
+  .comp-table tbody tr { border-bottom: 1px solid #EBEBEB; background: #fff; }
+  .comp-table tbody tr:last-child { border-bottom: none; }
+  .comp-table td {
+    padding: 16px 20px; text-align: center; font-size: 14px;
+  }
+  .comp-table td:first-child { text-align: left; font-weight: 600; color: var(--ink); }
+  .comp-table td.champion-col { background: rgba(212,160,23,0.06); font-weight: 700; }
+  .check { color: var(--green); font-size: 20px; }
+  .cross { color: var(--red); font-size: 20px; }
+
+  /* ── DOCTOR ── */
+  .doctor-sec { background: var(--bg-white); }
+  .doctor-card {
+    background: var(--bg-dark);
+    border-radius: 24px;
+    padding: 48px;
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 40px; align-items: center;
+    border: 1px solid rgba(212,160,23,0.15);
+    position: relative; overflow: hidden;
+  }
+  .doctor-card::before {
+    content: '"';
+    position: absolute; top: 20px; right: 36px;
+    font-size: 140px; line-height: 1;
+    background: var(--gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; opacity: 0.18;
+    font-family: Georgia, serif;
+  }
+  .doctor-avatar {
+    width: 160px; height: 160px; border-radius: 50%;
+    border: 3px solid rgba(212,160,23,0.35);
+    object-fit: cover; object-position: top center;
+    flex-shrink: 0;
+  }
+  blockquote {
+    font-size: clamp(16px, 2.2vw, 20px);
+    color: rgba(255,255,255,0.85);
+    line-height: 1.65; font-style: italic;
+    margin-bottom: 24px;
+  }
+  .doctor-meta strong { color: var(--accent2); display: block; font-size: 16px; margin-bottom: 4px; }
+  .doctor-meta span { color: rgba(255,255,255,0.45); font-size: 13px; }
+
+  /* ── TESTIMONIALS ── */
+  .testi-sec { background: var(--bg-soft); }
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px; margin-top: 48px;
+  }
+  .testi-card {
+    background: var(--bg-white);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    box-shadow: var(--shadow);
+    border-top: 3px solid var(--accent);
+  }
+  .stars { color: var(--accent); font-size: 18px; margin-bottom: 14px; letter-spacing: 2px; }
+  .testi-card p { font-size: 14px; color: #444; line-height: 1.65; margin-bottom: 18px; }
+  .testi-author { display: flex; align-items: center; gap: 12px; }
+  .testi-ava {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    color: #08091A; font-weight: 800; font-size: 16px; flex-shrink: 0;
+  }
+  .testi-name strong { font-size: 14px; display: block; }
+  .testi-name span { font-size: 12px; color: var(--sub); }
+
+  /* ── OFFER BLOCK ── */
+  .offer-sec { background: var(--bg-dark); padding: 80px 20px; }
+  .offer-inner {
+    max-width: 680px; margin: 0 auto; text-align: center;
+  }
+  .offer-inner h2 { color: #fff; margin-bottom: 12px; }
+  .offer-inner .lead { color: rgba(255,255,255,0.55); margin: 0 auto 36px; }
+  .price-block {
+    background: rgba(212,160,23,0.08);
+    border: 1.5px solid rgba(212,160,23,0.25);
+    border-radius: 20px;
+    padding: 36px;
+    margin-bottom: 28px;
+  }
+  .old-price {
+    font-size: 22px; color: rgba(255,255,255,0.3);
+    text-decoration: line-through; margin-bottom: 6px;
+  }
+  .new-price {
+    font-size: clamp(40px, 8vw, 64px); font-weight: 900;
+    background: var(--gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; line-height: 1;
+    margin-bottom: 8px;
+  }
+  .price-note { color: rgba(255,255,255,0.45); font-size: 14px; }
+  .discount-badge {
+    display: inline-block;
+    background: var(--red); color: #fff;
+    font-size: 14px; font-weight: 800;
+    padding: 8px 20px; border-radius: 50px;
+    margin-bottom: 24px;
+  }
+  .guarantee-row {
+    display: flex; justify-content: center; gap: 24px;
+    flex-wrap: wrap; margin-top: 24px;
+  }
+  .g-item { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.55); font-size: 13px; }
+  .g-icon { font-size: 18px; }
+
+  /* ── FORM ── */
+  .form-sec { background: var(--bg-soft); }
+  .form-card {
+    background: var(--bg-white);
+    border-radius: 24px;
+    padding: 52px 48px;
+    max-width: 560px; margin: 0 auto;
+    box-shadow: 0 16px 60px rgba(0,0,0,0.1);
+    border: 1px solid rgba(212,160,23,0.12);
+  }
+  .form-card h2 { font-size: 28px; margin-bottom: 8px; }
+  .form-card .lead { font-size: 15px; margin-bottom: 32px; color: var(--sub); }
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--sub); margin-bottom: 7px; letter-spacing: 0.03em; }
+  .form-group input, .form-group select {
+    width: 100%; padding: 14px 18px;
+    border: 1.5px solid #E0E3EA;
+    border-radius: 12px; font-size: 15px;
+    color: var(--ink); background: #F9FAFB;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+  .form-group input:focus, .form-group select:focus {
+    border-color: var(--accent); box-shadow: 0 0 0 3px rgba(212,160,23,0.12);
+    background: #fff;
+  }
+  .form-submit {
+    width: 100%; background: var(--gold);
+    color: #08091A; font-weight: 800; font-size: 17px;
+    border: none; border-radius: 50px; padding: 18px;
+    cursor: pointer;
+    box-shadow: 0 6px 28px rgba(212,160,23,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 8px;
+  }
+  .form-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 36px rgba(212,160,23,0.5); }
+  .form-privacy { text-align: center; font-size: 12px; color: var(--sub); margin-top: 14px; }
+  .form-success {
+    display: none; text-align: center; padding: 36px 20px;
+  }
+  .form-success .tick { font-size: 56px; margin-bottom: 16px; }
+  .form-success h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; color: var(--green); }
+  .form-success p { color: var(--sub); font-size: 15px; }
+
+  /* ── FAQ ── */
+  .faq-sec { background: var(--bg-white); }
+  .faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 12px; }
+  .faq-item {
+    border: 1.5px solid #EBEBEB;
+    border-radius: var(--radius); overflow: hidden;
+  }
+  .faq-q {
+    padding: 20px 24px;
+    font-size: 15px; font-weight: 700; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    user-select: none;
+    transition: background 0.2s;
+  }
+  .faq-q:hover { background: var(--bg-soft); }
+  .faq-q .arrow { font-size: 20px; transition: transform 0.25s; color: var(--accent); }
+  .faq-item.open .arrow { transform: rotate(45deg); }
+  .faq-a {
+    padding: 0 24px; max-height: 0; overflow: hidden;
+    font-size: 14px; color: var(--sub); line-height: 1.7;
+    transition: max-height 0.35s ease, padding 0.25s ease;
+  }
+  .faq-item.open .faq-a { max-height: 300px; padding: 0 24px 20px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bg-dark2);
+    padding: 48px 20px 32px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-inner {
+    max-width: 1060px; margin: 0 auto;
+    display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between;
+    margin-bottom: 40px;
+  }
+  .footer-brand .nav-logo { font-size: 26px; }
+  .footer-brand p { color: rgba(255,255,255,0.4); font-size: 13px; margin-top: 12px; max-width: 220px; line-height: 1.6; }
+  .footer-links h4 { color: rgba(255,255,255,0.55); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px; font-weight: 700; }
+  .footer-links ul { list-style: none; }
+  .footer-links li { margin-bottom: 9px; }
+  .footer-links a { color: rgba(255,255,255,0.6); font-size: 14px; text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--accent2); }
+  .footer-bottom {
+    max-width: 1060px; margin: 0 auto;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding-top: 24px;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    color: rgba(255,255,255,0.3); font-size: 12px;
+  }
+
+  /* ── STICKY BOTTOM CTA (mobile) ── */
+  .sticky-cta {
+    display: none;
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
+    background: rgba(8,9,26,0.97);
+    padding: 14px 20px;
+    border-top: 1px solid rgba(212,160,23,0.2);
+  }
+  .sticky-cta a {
+    display: block; width: 100%;
+    background: var(--gold);
+    color: #08091A; font-weight: 800; font-size: 16px;
+    border-radius: 50px; padding: 16px;
+    text-align: center; text-decoration: none;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .how-sec { background: var(--bg-white); }
+  .how-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px; margin-top: 48px;
+  }
+  .how-card {
+    background: var(--bg-soft);
+    border-radius: var(--radius);
+    padding: 32px 24px; text-align: center;
+  }
+  .how-num {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; font-weight: 900; color: #08091A;
+    margin: 0 auto 18px;
+  }
+  .how-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+  .how-card p { font-size: 13px; color: var(--sub); line-height: 1.6; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .product-inner { grid-template-columns: 1fr; gap: 40px; }
+    .product-img-wrap { order: -1; }
+    .doctor-card { grid-template-columns: 1fr; gap: 24px; text-align: center; padding: 32px 24px; }
+    .form-card { padding: 32px 24px; }
+    .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .stat-item:last-child { border-bottom: none; }
+    .comp-table { font-size: 12px; }
+    .comp-table td, .comp-table th { padding: 12px 10px; }
+    .sticky-cta { display: block; }
+    body { padding-bottom: 80px; }
+    .footer-inner { flex-direction: column; }
+  }
+
+  @media (max-width: 480px) {
+    .hero { padding: 100px 16px 60px; }
+    .product-mockup { width: 220px; height: 300px; }
+    .product-name-big { font-size: 34px; }
+    section { padding: 56px 16px; }
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">CHAMPION</div>
+  <a href="#form" class="nav-cta">Буюртма бериш →</a>
+</nav>
+
+<!-- COUNTDOWN BAR -->
+<div class="countdown-bar">
+  <span>🔥 Акция тугашига:</span>
+  <div class="countdown-timer">
+    <div class="timer-block" id="t-h">00</div>
+    <span class="timer-sep">:</span>
+    <div class="timer-block" id="t-m">59</div>
+    <span class="timer-sep">:</span>
+    <div class="timer-block" id="t-s">00</div>
+  </div>
+  <span>— <strong>50% чегирма</strong> мавжуд</span>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <!-- LEFT: Text -->
+    <div class="hero-text">
+      <div class="hero-badge">🏆 Андрологлар тавсия этган №1 восита</div>
+      <h1>Кимёвий дорисиз —<br><span>30 дақиқада кучли натижа</span></h1>
+      <p class="hero-sub">
+        CHAMPION табиий таркиби юракка зарар бермасдан эркаклик қувватини тиклайди.
+        35 ёшдан катта эркаклар учун яратилган.
+      </p>
+      <div class="hero-ctas">
+        <a href="#form" class="btn-gold">50% чегирма билан олиш →</a>
+        <a href="#product" class="btn-ghost">Маҳсулот ҳақида</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item"><div class="trust-icon">⚡</div>30 дақиқа ичида таъсир қилади</div>
+        <div class="trust-item"><div class="trust-icon">🌿</div>100% табиий таркиб</div>
+        <div class="trust-item"><div class="trust-icon">❤️</div>Юракка хавфсиз</div>
+        <div class="trust-item"><div class="trust-icon">📦</div>Аноним етказиб бериш</div>
+      </div>
+    </div>
+    <!-- RIGHT: Product image -->
+    <div class="hero-img-wrap fade-up">
+      <img src="champion-img/product_hero.jpg"
+           alt="CHAMPION by Twin mahsuloti"
+           loading="eager"
+           onerror="this.parentElement.style.display='none'">
+      <div class="hero-img-badge">
+        <span>Халол сертификатланган</span>
+        <strong>✦ CHAMPION by Twin</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-dark">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item fade-up">
+        <div class="stat-num">35+</div>
+        <div class="stat-label">ёшдан катта эркакларнинг<br>1/3 қисми муаммога дуч келади</div>
+      </div>
+      <div class="stat-item fade-up">
+        <div class="stat-num">30</div>
+        <div class="stat-label">дақиқа ичида CHAMPION<br>таъсир кўрсата бошлайди</div>
+      </div>
+      <div class="stat-item fade-up">
+        <div class="stat-num">94%</div>
+        <div class="stat-label">мижозлар 1-курсдаёқ<br>натижани ҳис этади</div>
+      </div>
+      <div class="stat-item fade-up">
+        <div class="stat-num">0</div>
+        <div class="stat-label">кимёвий модда — фақат<br>табиий гиёҳ экстрактлари</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="container">
+    <div class="section-badge">Муаммо</div>
+    <h2>Бу ҳолатлар танишми?</h2>
+    <p class="lead">Агар қуйидагилардан камида биттаси ҳаётингизда бўлса — бу мурожаат этишга вақт келганидан дарак беради.</p>
+    <div class="problem-grid">
+      <div class="problem-card fade-up">
+        <div class="emoji">😰</div>
+        <h3>Яқинликдан олдин қўрқув</h3>
+        <p>"Ўхшамай қолса-чи" деган ҳавотир сизни тарк этмайди ва бу ишончни янада сусайтиради.</p>
+      </div>
+      <div class="problem-card fade-up">
+        <div class="emoji">😔</div>
+        <h3>Баҳоналар топасиз</h3>
+        <p>Чарчоқ, стресс, кайфият йўқлигини рўкач қилиб яқинликдан қочасиз. Аёлингиз буни сезади.</p>
+      </div>
+      <div class="problem-card fade-up">
+        <div class="emoji">💊</div>
+        <h3>Таблеткалар юракни уриб юборади</h3>
+        <p>Дорихоналардаги кимёвий воситалар вақтинча ёрдам берса-да, юрак уриши ва юз қизаришини келтиради.</p>
+      </div>
+      <div class="problem-card fade-up">
+        <div class="emoji">💔</div>
+        <h3>Оилавий муносабатлар совийди</h3>
+        <p>Аёлингизнинг нигоҳида умидсизлик, муносабатларда эҳтирос сўнган — бу ҳаммасидан оғирроқ.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT -->
+<section class="product-sec" id="product">
+  <div class="container">
+    <div class="product-inner">
+      <div class="product-img-wrap fade-up">
+        <div class="product-mockup">
+          <img src="champion-img/doctor_product_web.jpg" alt="CHAMPION by Twin mahsuloti" loading="lazy">
+        </div>
+      </div>
+      <div class="product-content fade-up">
+        <div class="section-badge dark">CHAMPION препарати</div>
+        <h2>2025 йилдаги эркаклик соғлиғида энг катта инновация</h2>
+        <p class="lead" style="color:rgba(255,255,255,0.55)">
+          Андрологлар ва нутрициологлар биргаликда яратган CHAMPION эркак организмининг табиий механизмини қайта ишга туширади — кимёвий стимуляторларсиз.
+        </p>
+        <div class="product-features">
+          <div class="feat-row">
+            <div class="feat-icon">⚡</div>
+            <div class="feat-text">
+              <h4>Тезкор натижа — 30 дақиқа</h4>
+              <p>Биринчи қабулдаёқ қон айланиши яхшиланади ва энергия ортади.</p>
+            </div>
+          </div>
+          <div class="feat-row">
+            <div class="feat-icon">🌿</div>
+            <div class="feat-text">
+              <h4>100% табиий гиёҳ экстрактлари</h4>
+              <p>Синтетик кимёвий модда йўқ. Юрак ва қон босимига таъсир кўрсатмайди.</p>
+            </div>
+          </div>
+          <div class="feat-row">
+            <div class="feat-icon">📈</div>
+            <div class="feat-text">
+              <h4>Узоқ муддатли тиклаш</h4>
+              <p>Бир курс тугагандан сўнг эркаклик функцияси мустаҳкамланади, ўзига ишонч ортади.</p>
+            </div>
+          </div>
+          <div class="feat-row">
+            <div class="feat-icon">🔒</div>
+            <div class="feat-text">
+              <h4>Тўлиқ аноним етказиб бериш</h4>
+              <p>Пакетда маҳсулот номи кўринмайди. Курьер ҳам ичида нима борлигини билмайди.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-sec">
+  <div class="container">
+    <div class="section-badge">Қандай ишлайди</div>
+    <h2>3 босқичда натижа</h2>
+    <p class="lead">CHAMPION тана тизимларини кетма-кет актив қилади — дарчалик эмас, табиий йўл билан.</p>
+    <div class="how-grid">
+      <div class="how-card fade-up">
+        <div class="how-num">1</div>
+        <h3>30 дақиқа ичида</h3>
+        <p>Қон айланиши яхшиланади. Тестостерон синтезига ёрдам берувчи компонентлар активлашади.</p>
+      </div>
+      <div class="how-card fade-up">
+        <div class="how-num">2</div>
+        <h3>3–7 кун ичида</h3>
+        <p>Стресс горизонтлари пасаяди. Уйқу яхшиланади. Кундузги энергия ва кайфият ортади.</p>
+      </div>
+      <div class="how-card fade-up">
+        <div class="how-num">3</div>
+        <h3>Курс тугагандан сўнг</h3>
+        <p>Эркаклик функцияси барқарорлашади. Ўзига ишонч тикланади. Оилавий муносабатлар яхшиланади.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT GALLERY -->
+<section style="background:var(--bg-dark); padding:60px 20px;">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:12px;">
+      <span class="section-badge dark">Махсулот кўриниши</span>
+    </div>
+    <h2 style="color:#fff; text-align:center; margin-bottom:8px;">CHAMPION by Twin</h2>
+    <p style="text-align:center; color:rgba(255,255,255,0.5); margin-bottom:0; font-size:15px;">Methylcellulose халол капсуласи • ХАЛОЛ</p>
+    <div class="product-gallery" style="margin-top:36px; grid-template-columns: repeat(4,1fr);">
+      <img src="champion-img/product1.jpg" alt="CHAMPION tutun" loading="lazy">
+      <img src="champion-img/product2.jpg" alt="CHAMPION tosh va soat" loading="lazy">
+      <img src="champion-img/product3.jpg" alt="CHAMPION qora fon" loading="lazy">
+      <img src="champion-img/product4.jpg" alt="CHAMPION premium" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="comparison-sec">
+  <div class="container">
+    <div class="section-badge">Таққослаш</div>
+    <h2>CHAMPION vs Кимёвий дорилар</h2>
+    <p class="lead">Нима учун андрологлар синтетик стимуляторлар ўрнига CHAMPION тавсия этади?</p>
+    <div style="overflow-x:auto; margin-top:40px;">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Хусусият</th>
+            <th>Кимёвий дорилар</th>
+            <th class="champion-col">✦ CHAMPION</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Юракка хавфи</td>
+            <td><span class="cross">✕ Бор</span></td>
+            <td class="champion-col"><span class="check">✓ Йўқ</span></td>
+          </tr>
+          <tr>
+            <td>Табиий таркиб</td>
+            <td><span class="cross">✕ Синтетик</span></td>
+            <td class="champion-col"><span class="check">✓ 100% Табиий</span></td>
+          </tr>
+          <tr>
+            <td>Узоқ муддатли натижа</td>
+            <td><span class="cross">✕ Вақтинча</span></td>
+            <td class="champion-col"><span class="check">✓ Доимий тиклаш</span></td>
+          </tr>
+          <tr>
+            <td>Юз қизариши / кўриш бузилиши</td>
+            <td><span class="cross">✕ Бор</span></td>
+            <td class="champion-col"><span class="check">✓ Йўқ</span></td>
+          </tr>
+          <tr>
+            <td>Рецептсиз олиш мумкин</td>
+            <td><span class="cross">✕ Рецепт керак</span></td>
+            <td class="champion-col"><span class="check">✓ Онлайн буюртма</span></td>
+          </tr>
+          <tr>
+            <td>Аноним етказиб бериш</td>
+            <td><span class="cross">✕ Йўқ</span></td>
+            <td class="champion-col"><span class="check">✓ Бор</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- DOCTOR -->
+<section class="doctor-sec">
+  <div class="container">
+    <div class="section-badge">Мутахассис фикри</div>
+    <h2>Андролог нима дейди?</h2>
+    <div class="doctor-card fade-up" style="margin-top:40px;">
+      <img class="doctor-avatar" src="champion-img/doctor_web.jpg" alt="Доктор А. Каримов" loading="lazy">
+      <div>
+        <blockquote>
+          "Кимёвий дорилар симптомни вақтинча бостиради, лекин сабабни бартараф этмайди ва юракка юкланиш яратади. CHAMPION эса табиий йўл билан қон айланишини яхшилайди, тестостерон синтезига ёрдам беради ва организмни ичидан тиклайди. Натижа — кутилмаган пайт эмас, керакли вақтда бўлади."
+        </blockquote>
+        <div class="doctor-meta">
+          <strong>Доктор А. Каримов</strong>
+          <span>Андролог-нутрициолог • 14 йиллик тажриба</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi-sec">
+  <div class="container">
+    <div class="section-badge">Натижалар</div>
+    <h2>Мижозларимиз нима дейди</h2>
+    <div class="testi-grid">
+      <div class="testi-card fade-up">
+        <div class="stars">★★★★★</div>
+        <p>"41 ёшдаман. Стресс туфайли муаммо бошланган эди. Дорихонадаги таблеткалардан юрагим тез уриб, кейин безовта бўла бошladim. CHAMPION билан 5 кундан сўнг фарқни ҳис эттим. Аёлим ҳам ажабланди."</p>
+        <div class="testi-author">
+          <div class="testi-ava">А</div>
+          <div class="testi-name"><strong>Акбар М.</strong><span>Тошкент, 41 ёш</span></div>
+        </div>
+      </div>
+      <div class="testi-card fade-up">
+        <div class="stars">★★★★★</div>
+        <p>"Уч ой CHAMPION ичдим. Аввал ишонмаган эдим, чунки ўтган доридан ёрдам бўлмаган. Лекин бу бошқача экан — таъсири секин-аста бошланди ва барқарор бўлди. Энди ишонч бор."</p>
+        <div class="testi-author">
+          <div class="testi-ava">Ф</div>
+          <div class="testi-name"><strong>Фаррух Т.</strong><span>Самарқанд, 38 ёш</span></div>
+        </div>
+      </div>
+      <div class="testi-card fade-up">
+        <div class="stars">★★★★★</div>
+        <p>"Дастлаб шубҳа қилдим. Лекин 30 дақиқа ичида ҳис этдим — юрак уриши ортмади, юз қизармади. Фақат ўзимни яхши сездим. 2 ой ичдим — натижа сақланяпти."</p>
+        <div class="testi-author">
+          <div class="testi-ava">Б</div>
+          <div class="testi-name"><strong>Бобур Н.</strong><span>Фарғона, 46 ёш</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section class="offer-sec" id="offer">
+  <div class="offer-inner">
+    <div class="section-badge dark">Махсус таклиф</div>
+    <h2>Ишлаб чиқарувчидан тўғридан-тўғри</h2>
+    <p class="lead">Дорихоналардаги устама нархларсиз. Бугун буюртма берсангиз — 50% чегирма билан оласиз.</p>
+    <div class="price-block">
+      <div class="discount-badge">🔥 АКЦИЯ — 50% ЧЕГИРМА</div>
+      <div class="new-price" style="font-size:clamp(22px,4vw,34px); margin-bottom:14px;">Нарх ҳақида оператор маълумот беради</div>
+      <div class="price-note">1 курс (1 ой) • Аноним етказиб бериш бепул</div>
+    </div>
+    <a href="#form" class="btn-gold" style="font-size:17px;padding:18px 48px;">Ҳозир буюртма бериш →</a>
+    <div class="guarantee-row">
+      <div class="g-item"><span class="g-icon">📦</span>Бепул етказиб бериш</div>
+      <div class="g-item"><span class="g-icon">🔒</span>Тўлиқ аноним</div>
+      <div class="g-item"><span class="g-icon">📞</span>15 дақиқада қўнғироқ</div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="form-sec" id="form">
+  <div class="container">
+    <div class="form-card">
+      <h2>Буюртма бериш</h2>
+      <p class="lead">Маълумотларингизни қолдиринг — оператор 15 дақиқа ичида қўнғироқ қилади ва тасдиқлайди.</p>
+      <div id="form-body">
+        <div class="form-group">
+          <label>Исмингиз *</label>
+          <input type="text" id="f-name" placeholder="Масалан: Акбар" required>
+        </div>
+        <div class="form-group">
+          <label>Телефон рақамингиз *</label>
+          <input type="tel" id="f-phone" placeholder="+998 __ ___ __ __" required>
+        </div>
+        <div class="form-group">
+          <label>Вилоят</label>
+          <select id="f-region">
+            <option value="">Танланг</option>
+            <option>Тошкент шаҳри</option>
+            <option>Тошкент вилояти</option>
+            <option>Самарқанд</option>
+            <option>Фарғона</option>
+            <option>Андижон</option>
+            <option>Наманган</option>
+            <option>Бухоро</option>
+            <option>Қашқадарё</option>
+            <option>Сурхондарё</option>
+            <option>Хоразм</option>
+            <option>Жиззах</option>
+            <option>Сирдарё</option>
+            <option>Навоий</option>
+            <option>Қорақалпоғистон</option>
+          </select>
+        </div>
+        <button class="form-submit" onclick="submitForm()">50% чегирма билан буюртма бериш →</button>
+        <p class="form-privacy">🔒 Маълумотларингиз учинчи шахсларга берилмайди</p>
+      </div>
+      <div class="form-success" id="form-success">
+        <div class="tick">✅</div>
+        <h3>Буюртмангиз қабул қилинди!</h3>
+        <p>Оператор 15 дақиқа ичида сизга қўнғироқ қилади ва этказиб беришни тасдиқлайди.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="container">
+    <div class="section-badge">Саволлар</div>
+    <h2>Кўп бериладиган саволлар</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">CHAMPION кимёвий дорилардан нимаси билан фарқланади? <span class="arrow">+</span></div>
+        <div class="faq-a">CHAMPION фақат табиий гиёҳ экстрактларидан иборат. Кимёвий стимуляторлар юракка, қон босимига ва кўришга таъсир қилади. CHAMPION эса юрак уришини ошириш ёки бошқа ножўя таъсирларсиз ишлайди. Таъсир механизми бошқача — организмни ичидан тиклаш.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Натижани қачон сезаман? <span class="arrow">+</span></div>
+        <div class="faq-a">Биринчи қабулдан 30 дақиқа ичида қон айланиши яхшиланишини ҳис эта бошлайсиз. 3–7 кун ичида умумий энергия ва кайфият ортади. Тўлиқ курс (1 ой) тугагандан сўнг эркаклик функцияси барқарорлашади.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Рецепт керакми? <span class="arrow">+</span></div>
+        <div class="faq-a">Йўқ, рецепт талаб қилинмайди. CHAMPION биологик фаол озиқ-овқат қўшимчаси сифатида рўйхатдан ўтган. Онлайн буюртма беришингиз ва уйингизга аноним тарзда олишингиз мумкин.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Этказиб бериш қандай амалга оширилади? <span class="arrow">+</span></div>
+        <div class="faq-a">Тўлиқ аноним тарзда. Пакет устида маҳсулот номи ёки таркиби кўрсатилмайди. Курьер ҳам ичида нима борлигини билмайди. Ўзбекистоннинг барча вилоятларига етказиб берамиз.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Ножўя таъсирлари борми? <span class="arrow">+</span></div>
+        <div class="faq-a">100% табиий таркиби туфайли ножўя таъсирлар аниқланмаган. Юрак уриши ортиши, юз қизариши, кўриш бузилиши — буларнинг ҳаммаси кимёвий воситаларга хос. CHAMPION билан бундай ҳолатлар кузатилмаган.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Тўлов қандай амалга оширилади? <span class="arrow">+</span></div>
+        <div class="faq-a">Маҳсулот олганда тўлайсиз (наличный). Олдиндан тўлов талаб қилинмайди. Буюртмани телефонингизга оператор тасдиқлагандан сўнг курьер сизга топширади ва шунда тўлайсиз.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Бир курс қанча вақтга мўлжалланган? <span class="arrow">+</span></div>
+        <div class="faq-a">Стандарт курс — 1 ой (30 кунлик). Яхши натижа учун 2–3 курс тавсия этилади. Кўп буюртма берсангиз — нарх арзонроқ бўлади. Оператор маслаҳат беради.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="nav-logo">CHAMPION</div>
+      <p>Эркаклик қувватини тиклаш учун №1 табиий комплекс. 100% хавфсиз ва аноним.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Маҳсулот</h4>
+      <ul>
+        <li><a href="#product">CHAMPION ҳақида</a></li>
+        <li><a href="#offer">Нарх ва таклиф</a></li>
+        <li><a href="#form">Буюртма бериш</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Маълумот</h4>
+      <ul>
+        <li><a href="#faq">Саволлар ва жавоблар</a></li>
+        <li><a href="#doctor">Мутахассис фикри</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Боғланиш</h4>
+      <ul>
+        <li><a href="tel:+998555113366">+998 55 511 33 66</a></li>
+        <li><a href="tel:+998555120880">+998 55 512 08 80</a></li>
+        <li><a href="https://t.me/champion_menedjer" target="_blank">Telegram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 CHAMPION. Барча ҳуқуқлар ҳимояланган.</span>
+    <span>Маҳсулот БАД сифатида рўйхатдан ўтган</span>
+  </div>
+</footer>
+
+<!-- STICKY CTA -->
+<div class="sticky-cta">
+  <a href="#form">🔥 50% чегирма — Ҳозир буюртма бериш</a>
+</div>
+
+<script>
+// ── COUNTDOWN TIMER ──
+(function() {
+  let end = Date.now() + 55 * 60 * 1000; // 55 min from load
+  // Persist across reloads
+  const stored = localStorage.getItem('champion_end');
+  if (stored && Number(stored) > Date.now()) {
+    end = Number(stored);
+  } else {
+    localStorage.setItem('champion_end', end);
+  }
+
+  function pad(n) { return n < 10 ? '0'+n : n; }
+  function tick() {
+    const diff = Math.max(0, end - Date.now());
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('t-h').textContent = pad(h);
+    document.getElementById('t-m').textContent = pad(m);
+    document.getElementById('t-s').textContent = pad(s);
+    if (diff === 0) {
+      // Reset for urgency
+      const newEnd = Date.now() + 55 * 60 * 1000;
+      localStorage.setItem('champion_end', newEnd);
+      end = newEnd;
+    }
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+
+// ── FAQ TOGGLE ──
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// ── UTM METKALARI ── (URL'dan olib, localStorage'da saqlaymiz)
+const UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+(function captureUtm() {
+  const p = new URLSearchParams(location.search);
+  let found = false;
+  const utm = {};
+  UTM_KEYS.forEach(k => { const v = p.get(k); if (v) { utm[k] = v; found = true; } });
+  if (found) localStorage.setItem('champion_utm', JSON.stringify(utm));
+})();
+function getUtm() {
+  try { return JSON.parse(localStorage.getItem('champion_utm') || '{}'); }
+  catch(e) { return {}; }
+}
+
+// ── FORM SUBMIT ── (kalitlar serverda — /api/send)
+async function submitForm() {
+  const name   = document.getElementById('f-name').value.trim();
+  const phone  = document.getElementById('f-phone').value.trim();
+  const region = document.getElementById('f-region').value;
+
+  if (!name)  { alert('Исмингизни киритинг'); return; }
+  if (!phone || phone.length < 9) { alert('Телефон рақамингизни киритинг'); return; }
+
+  const btn = document.querySelector('.form-submit');
+  btn.disabled = true;
+  btn.textContent = 'Юборилмоқда...';
+
+  try {
+    const r = await fetch('/api/send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, phone, region, utm: getUtm(), pageUrl: location.href })
+    });
+    if (!r.ok) throw new Error('send failed');
+  } catch(e) {
+    btn.disabled = false;
+    btn.textContent = '50% чегирма билан буюртма бериш →';
+    alert('Хатолик юз берди. Яна уриниб кўринг.');
+    return;
+  }
+
+  if (typeof fbq !== 'undefined') fbq('track', 'Lead');
+  document.getElementById('form-body').style.display = 'none';
+  document.getElementById('form-success').style.display = 'block';
+}
+
+// ── FADE-UP ON SCROLL ──
+const fadeEls = document.querySelectorAll('.fade-up');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.12 });
+fadeEls.forEach(el => observer.observe(el));
+
+// ── PHONE FORMAT ──
+const phoneInput = document.getElementById('f-phone');
+if (phoneInput) {
+  phoneInput.addEventListener('input', function() {
+    let val = this.value.replace(/\D/g,'');
+    if (val.startsWith('998')) val = '+' + val;
+    else if (val.startsWith('9') && val.length > 2) val = '+998' + val.slice(0);
+    this.value = val;
+  });
+}
+</script>
+</body>
+</html>
