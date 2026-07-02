@@ -296,6 +296,35 @@
     transition: transform 0.25s;
   }
   .product-gallery img:hover { transform: scale(1.03); }
+  /* Mahsulot + sertifikatlar ko'rgazmasi */
+  .showcase-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 16px; margin-top: 36px; align-items: start;
+  }
+  .showcase-product {
+    width: 100%; border-radius: 14px;
+    aspect-ratio: 3/4; object-fit: cover;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+    border: 1px solid rgba(212,160,23,0.15);
+    transition: transform 0.25s;
+  }
+  .showcase-product:hover { transform: scale(1.03); }
+  .cert-card {
+    display: flex; flex-direction: column; gap: 10px;
+    background: #fff; border-radius: 14px; padding: 10px;
+    text-decoration: none;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+    border: 1px solid rgba(212,160,23,0.25);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .cert-card:hover { transform: translateY(-4px); box-shadow: 0 12px 34px rgba(0,0,0,0.5); }
+  .cert-card img {
+    width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top;
+    border-radius: 8px; background: #fff;
+  }
+  @media (max-width: 860px) {
+    .showcase-grid { grid-template-columns: 1fr 1fr; }
+  }
   .product-content h2 { color: #fff; margin-bottom: 14px; }
   .product-content .lead { color: rgba(255,255,255,0.6); }
   .product-features { margin-top: 36px; display: flex; flex-direction: column; gap: 18px; }
@@ -702,8 +731,8 @@
       </div>
       <div class="problem-card fade-up">
         <div class="emoji">💊</div>
-        <h3>Таблеткалар юракни уриб юборади</h3>
-        <p>Дорихоналардаги кимёвий воситалар вақтинча ёрдам берса-да, юрак уриши ва юз қизаришини келтиради.</p>
+        <h3>Таблеткалар инфарктга сабаб бўлиши ва озига оргатиб койиши мумкин</h3>
+        <p>Дорихоналардаги кимёвий воситалар вақтинча ёрдам берса-да, Инфаркт ва инсультга сабаб бўлиши ҳамда кўникма (привыкание) пайдо қилиши мумкин.</p>
       </div>
       <div class="problem-card fade-up">
         <div class="emoji">💔</div>
@@ -734,28 +763,28 @@
             <div class="feat-icon">⚡</div>
             <div class="feat-text">
               <h4>Тезкор натижа — 30 дақиқа</h4>
-              <p>Биринчи қабулдаёқ қон айланиши яхшиланади ва энергия ортади.</p>
+              <p>Биринчи қабулдаёқ қон айланиши яхшиланади ва энергия ортади</p>
             </div>
           </div>
           <div class="feat-row">
             <div class="feat-icon">🌿</div>
             <div class="feat-text">
               <h4>100% табиий гиёҳ экстрактлари</h4>
-              <p>Синтетик кимёвий модда йўқ. Юрак ва қон босимига таъсир кўрсатмайди.</p>
+              <p>Синтетик кимёвий модда йўқ. Юрак ва қон босимига таъсир кўрсатмайди. Куватни ва тестостеронни табиий оширади</p>
             </div>
           </div>
           <div class="feat-row">
             <div class="feat-icon">📈</div>
             <div class="feat-text">
               <h4>Узоқ муддатли тиклаш</h4>
-              <p>Бир курс тугагандан сўнг эркаклик функцияси мустаҳкамланади, ўзига ишонч ортади.</p>
+              <p>Кун сайин натижа янада сезиларли бўлади, бир курс якунлангач эса таъсири узоқ вақт сақланиб қолади ва эркаклик функцияси мустаҳкамланади, ўзига ишонч ортади</p>
             </div>
           </div>
           <div class="feat-row">
             <div class="feat-icon">🔒</div>
             <div class="feat-text">
               <h4>Тўлиқ аноним етказиб бериш</h4>
-              <p>Пакетда маҳсулот номи кўринмайди. Курьер ҳам ичида нима борлигини билмайди.</p>
+              <p>Пакетда маҳсулот номи кўринмайди. Ўзбекистон бўйлаб йетказиб берилади</p>
             </div>
           </div>
         </div>
@@ -774,17 +803,17 @@
       <div class="how-card fade-up">
         <div class="how-num">1</div>
         <h3>30 дақиқа ичида</h3>
-        <p>Қон айланиши яхшиланади. Тестостерон синтезига ёрдам берувчи компонентлар активлашади.</p>
+        <p>Қон айланиши яхшиланади. Тестостерон синтезига ёрдам берувчи компонентлар активлашади</p>
       </div>
       <div class="how-card fade-up">
         <div class="how-num">2</div>
         <h3>3–7 кун ичида</h3>
-        <p>Стресс горизонтлари пасаяди. Уйқу яхшиланади. Кундузги энергия ва кайфият ортади.</p>
+        <p>Эрекция мустаҳкамланади, жинсий майл кучаяди, жинсий алоқа давомийлиги 2-3 баробар ортади, уйқу, кайфият ва умумий жисмоний ҳолат яхшиланади</p>
       </div>
       <div class="how-card fade-up">
         <div class="how-num">3</div>
         <h3>Курс тугагандан сўнг</h3>
-        <p>Эркаклик функцияси барқарорлашади. Ўзига ишонч тикланади. Оилавий муносабатлар яхшиланади.</p>
+        <p>Простата бези саломатлиги қўллаб-қувватланади, эркаклик функцияси тикланади, тестостерон гормонининг табиий равишда ишлаб чиқарилиши кучаяди ва таъсири узоқ вақт сақланиб қолади</p>
       </div>
     </div>
   </div>
@@ -794,15 +823,23 @@
 <section style="background:var(--bg-dark); padding:60px 20px;">
   <div class="container">
     <div style="text-align:center; margin-bottom:12px;">
-      <span class="section-badge dark">Махсулот кўриниши</span>
+      <span class="section-badge dark">Махсулот ва сертификатлар</span>
     </div>
     <h2 style="color:#fff; text-align:center; margin-bottom:8px;">CHAMPION by Twin</h2>
     <p style="text-align:center; color:rgba(255,255,255,0.5); margin-bottom:0; font-size:15px;">Methylcellulose халол капсуласи • ХАЛОЛ</p>
-    <div class="product-gallery" style="margin-top:36px; grid-template-columns: repeat(4,1fr);">
-      <img src="champion-img/product1.jpg" alt="CHAMPION tutun" loading="lazy">
-      <img src="champion-img/product2.jpg" alt="CHAMPION tosh va soat" loading="lazy">
-      <img src="champion-img/product3.jpg" alt="CHAMPION qora fon" loading="lazy">
-      <img src="champion-img/product4.jpg" alt="CHAMPION premium" loading="lazy">
+    <div class="showcase-grid">
+      <!-- 1 ta mahsulot rasmi -->
+      <img class="showcase-product" src="champion-img/product1.jpg" alt="CHAMPION by Twin маҳсулоти" loading="lazy">
+      <!-- 3 ta sertifikat (bosilganда тўлиқ очилади) -->
+      <a class="cert-card" href="champion-img/cert_halal.jpg" target="_blank" rel="noopener">
+        <img src="champion-img/cert_halal.jpg" alt="HALAL сертификати" loading="lazy">
+      </a>
+      <a class="cert-card" href="champion-img/cert_2.jpg" target="_blank" rel="noopener">
+        <img src="champion-img/cert_2.jpg" alt="Радиология баённомаси" loading="lazy">
+      </a>
+      <a class="cert-card" href="champion-img/cert_6.jpg" target="_blank" rel="noopener">
+        <img src="champion-img/cert_6.jpg" alt="Санитария-эпидемиология хулосаси" loading="lazy">
+      </a>
     </div>
   </div>
 </section>
@@ -887,7 +924,7 @@
     <div class="testi-grid">
       <div class="testi-card fade-up">
         <div class="stars">★★★★★</div>
-        <p>"41 ёшдаман. Стресс туфайли муаммо бошланган эди. Дорихонадаги таблеткалардан юрагим тез уриб, кейин безовта бўла бошladim. CHAMPION билан 5 кундан сўнг фарқни ҳис эттим. Аёлим ҳам ажабланди."</p>
+        <p>"41 ёшдаман. Стресс коплиги туфайли муаммо бошланган эди. Дорихонадаги таблеткалардан юрагим тез уриб, кейин безовта бўлятодим. CHAMPION билан 5 кундан сўнг тасирини хис килдим. Айолим ҳам хурсанд"</p>
         <div class="testi-author">
           <div class="testi-ava">А</div>
           <div class="testi-name"><strong>Акбар М.</strong><span>Тошкент, 41 ёш</span></div>
@@ -895,7 +932,7 @@
       </div>
       <div class="testi-card fade-up">
         <div class="stars">★★★★★</div>
-        <p>"Уч ой CHAMPION ичдим. Аввал ишонмаган эдим, чунки ўтган доридан ёрдам бўлмаган. Лекин бу бошқача экан — таъсири секин-аста бошланди ва барқарор бўлди. Энди ишонч бор."</p>
+        <p>"Уч ой CHAMPION ичдим. Аввал ишонмаган эдим, чунки ўтган доридан ващще тасир кимаган. Лекин бунисини таъсири секин-аста бошланди ва стабил бўлди. Тавсия киламан"</p>
         <div class="testi-author">
           <div class="testi-ava">Ф</div>
           <div class="testi-name"><strong>Фаррух Т.</strong><span>Самарқанд, 38 ёш</span></div>
@@ -903,7 +940,7 @@
       </div>
       <div class="testi-card fade-up">
         <div class="stars">★★★★★</div>
-        <p>"Дастлаб шубҳа қилдим. Лекин 30 дақиқа ичида ҳис этдим — юрак уриши ортмади, юз қизармади. Фақат ўзимни яхши сездим. 2 ой ичдим — натижа сақланяпти."</p>
+        <p>"Бошда ишонмаятгандим. Лекин 30 дақиқа тасирини сездим — юрак ойнаб кетмади, юзим қизармади. 2ой ичдим натижа сақланяпти"</p>
         <div class="testi-author">
           <div class="testi-ava">Б</div>
           <div class="testi-name"><strong>Бобур Н.</strong><span>Фарғона, 46 ёш</span></div>
@@ -988,31 +1025,31 @@
     <div class="faq-list">
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">CHAMPION кимёвий дорилардан нимаси билан фарқланади? <span class="arrow">+</span></div>
-        <div class="faq-a">CHAMPION фақат табиий гиёҳ экстрактларидан иборат. Кимёвий стимуляторлар юракка, қон босимига ва кўришга таъсир қилади. CHAMPION эса юрак уришини ошириш ёки бошқа ножўя таъсирларсиз ишлайди. Таъсир механизми бошқача — организмни ичидан тиклаш.</div>
+        <div class="faq-a">CHAMPION фақат табиий гиёҳ экстрактларидан иборат. Кимёвий стимуляторлар юракка, қон босимига ва кўришга таъсир қилади. CHAMPION эса юрак уришини ошириш ёки бошқа ножўя таъсирларсиз ишлайди.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">Натижани қачон сезаман? <span class="arrow">+</span></div>
-        <div class="faq-a">Биринчи қабулдан 30 дақиқа ичида қон айланиши яхшиланишини ҳис эта бошлайсиз. 3–7 кун ичида умумий энергия ва кайфият ортади. Тўлиқ курс (1 ой) тугагандан сўнг эркаклик функцияси барқарорлашади.</div>
+        <div class="faq-a">Кўпчилик эркаклар дастлабки ўзгаришларни қабул қилишнинг биринчи кечасиданоқ сезишни бошлайди. 3–5 кун ичида эса энг юқори даражага етади: эрекция мустаҳкамланади, либидо ва чидамлилик ошади, жинсий алоқанинг давомийлиги 2–3 баробаргача узаяди.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">Рецепт керакми? <span class="arrow">+</span></div>
         <div class="faq-a">Йўқ, рецепт талаб қилинмайди. CHAMPION биологик фаол озиқ-овқат қўшимчаси сифатида рўйхатдан ўтган. Онлайн буюртма беришингиз ва уйингизга аноним тарзда олишингиз мумкин.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Этказиб бериш қандай амалга оширилади? <span class="arrow">+</span></div>
-        <div class="faq-a">Тўлиқ аноним тарзда. Пакет устида маҳсулот номи ёки таркиби кўрсатилмайди. Курьер ҳам ичида нима борлигини билмайди. Ўзбекистоннинг барча вилоятларига етказиб берамиз.</div>
+        <div class="faq-q" onclick="toggleFaq(this)">Йетказиб бериш қандай амалга оширилади? <span class="arrow">+</span></div>
+        <div class="faq-a">Тўлиқ аноним тарзда. Ўзбекистоннинг барча вилоятларига йетказиб берамиз.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">Ножўя таъсирлари борми? <span class="arrow">+</span></div>
-        <div class="faq-a">100% табиий таркиби туфайли ножўя таъсирлар аниқланмаган. Юрак уриши ортиши, юз қизариши, кўриш бузилиши — буларнинг ҳаммаси кимёвий воситаларга хос. CHAMPION билан бундай ҳолатлар кузатилмаган.</div>
+        <div class="faq-a">100% табиий таркиби туфайли ножўя таъсирлар аниқланмаган. Яқинда инфаркт ёки инсультни бошдан кечирган эркакларга, шунингдек, оғир буйрак йетишмовчилиги бор беморларга қабул қилиш тавсия этилмайди.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">Тўлов қандай амалга оширилади? <span class="arrow">+</span></div>
-        <div class="faq-a">Маҳсулот олганда тўлайсиз (наличный). Олдиндан тўлов талаб қилинмайди. Буюртмани телефонингизга оператор тасдиқлагандан сўнг курьер сизга топширади ва шунда тўлайсиз.</div>
+        <div class="faq-a">Маҳсулот олганда тўлайсиз. Олдиндан тўлов талаб қилинмайди. Буюртмани телефонингизга оператор тасдиқлагандан сўнг курьер сизга топширади ва шунда тўлайсиз.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">Бир курс қанча вақтга мўлжалланган? <span class="arrow">+</span></div>
-        <div class="faq-a">Стандарт курс — 1 ой (30 кунлик). Яхши натижа учун 2–3 курс тавсия этилади. Кўп буюртма берсангиз — нарх арзонроқ бўлади. Оператор маслаҳат беради.</div>
+        <div class="faq-a">Стандарт курс — 1 ой (30 кунлик). Яхши натижа учун 2–3 курс тавсия этилади.</div>
       </div>
     </div>
   </div>
