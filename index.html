@@ -297,33 +297,59 @@
   }
   .product-gallery img:hover { transform: scale(1.03); }
   /* Mahsulot + sertifikatlar ko'rgazmasi */
-  .showcase-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 16px; margin-top: 36px; align-items: start;
-  }
   .showcase-product {
-    width: 100%; border-radius: 14px;
+    display: block; width: 280px; max-width: 82%;
+    margin: 36px auto 30px; border-radius: 16px;
     aspect-ratio: 3/4; object-fit: cover;
-    box-shadow: 0 6px 24px rgba(0,0,0,0.35);
-    border: 1px solid rgba(212,160,23,0.15);
+    box-shadow: 0 10px 34px rgba(0,0,0,0.4);
+    border: 1px solid rgba(212,160,23,0.2);
     transition: transform 0.25s;
   }
   .showcase-product:hover { transform: scale(1.03); }
+  .cert-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 22px; max-width: 940px; margin: 0 auto;
+  }
   .cert-card {
-    display: flex; flex-direction: column; gap: 10px;
-    background: #fff; border-radius: 14px; padding: 10px;
-    text-decoration: none;
-    box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+    display: flex; flex-direction: column; gap: 12px;
+    background: #fff; border-radius: 16px; padding: 14px;
+    text-decoration: none; cursor: zoom-in;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.4);
     border: 1px solid rgba(212,160,23,0.25);
     transition: transform 0.25s, box-shadow 0.25s;
   }
-  .cert-card:hover { transform: translateY(-4px); box-shadow: 0 12px 34px rgba(0,0,0,0.5); }
+  .cert-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,0.55); }
   .cert-card img {
     width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top;
-    border-radius: 8px; background: #fff;
+    border-radius: 10px; background: #fff;
   }
+  .cert-card span {
+    text-align: center; font-size: 13px; font-weight: 700;
+    color: #0F1320; letter-spacing: 0.02em;
+  }
+  /* Sertifikat lightbox (to'liq ekran) */
+  .cert-lightbox {
+    position: fixed; inset: 0; z-index: 2000;
+    background: rgba(0,0,0,0.92); display: none;
+    align-items: center; justify-content: center;
+    padding: 20px; cursor: zoom-out;
+  }
+  .cert-lightbox.open { display: flex; }
+  .cert-lightbox img {
+    max-width: 100%; max-height: 92vh; object-fit: contain;
+    border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  }
+  .cert-lightbox-close {
+    position: absolute; top: 18px; right: 24px;
+    font-size: 34px; color: #fff; cursor: pointer;
+    line-height: 1; opacity: 0.8;
+  }
+  .cert-lightbox-close:hover { opacity: 1; }
   @media (max-width: 860px) {
-    .showcase-grid { grid-template-columns: 1fr 1fr; }
+    .cert-grid { grid-template-columns: 1fr 1fr; max-width: 520px; }
+  }
+  @media (max-width: 480px) {
+    .cert-grid { grid-template-columns: 1fr; max-width: 340px; }
   }
   .product-content h2 { color: #fff; margin-bottom: 14px; }
   .product-content .lead { color: rgba(255,255,255,0.6); }
@@ -487,14 +513,23 @@
     width: 100%; padding: 14px 18px;
     border: 1.5px solid #E0E3EA;
     border-radius: 12px; font-size: 15px;
-    color: var(--ink); background: #F9FAFB;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    color: var(--ink); background-color: #F9FAFB;
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
     outline: none;
   }
   .form-group input:focus, .form-group select:focus {
     border-color: var(--accent); box-shadow: 0 0 0 3px rgba(212,160,23,0.12);
-    background: #fff;
+    background-color: #fff;
   }
+  /* Chiroyli custom select (tilla strelka) */
+  .form-group select {
+    -webkit-appearance: none; -moz-appearance: none; appearance: none;
+    padding-right: 46px; cursor: pointer;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23D4A017' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+    background-repeat: no-repeat; background-position: right 16px center; background-size: 16px;
+  }
+  .form-group select:hover { border-color: rgba(212,160,23,0.55); }
+  .form-group select option { color: var(--ink); }
   .form-submit {
     width: 100%; background: var(--gold);
     color: #08091A; font-weight: 800; font-size: 17px;
@@ -827,22 +862,32 @@
     </div>
     <h2 style="color:#fff; text-align:center; margin-bottom:8px;">CHAMPION by Twin</h2>
     <p style="text-align:center; color:rgba(255,255,255,0.5); margin-bottom:0; font-size:15px;">Methylcellulose халол капсуласи • ХАЛОЛ</p>
-    <div class="showcase-grid">
-      <!-- 1 ta mahsulot rasmi -->
-      <img class="showcase-product" src="champion-img/product1.jpg" alt="CHAMPION by Twin маҳсулоти" loading="lazy">
-      <!-- 3 ta sertifikat (bosilganда тўлиқ очилади) -->
-      <a class="cert-card" href="champion-img/cert_halal.jpg" target="_blank" rel="noopener">
+    <!-- 1 ta mahsulot rasmi -->
+    <img class="showcase-product" src="champion-img/product1.jpg" alt="CHAMPION by Twin маҳсулоти" loading="lazy">
+    <!-- 3 ta sertifikat (bosilganда тўлиқ экранда очилади) -->
+    <div class="cert-grid">
+      <div class="cert-card" onclick="openCert('champion-img/cert_halal.jpg')">
         <img src="champion-img/cert_halal.jpg" alt="HALAL сертификати" loading="lazy">
-      </a>
-      <a class="cert-card" href="champion-img/cert_2.jpg" target="_blank" rel="noopener">
+        <span>HALAL сертификати</span>
+      </div>
+      <div class="cert-card" onclick="openCert('champion-img/cert_2.jpg')">
         <img src="champion-img/cert_2.jpg" alt="Радиология баённомаси" loading="lazy">
-      </a>
-      <a class="cert-card" href="champion-img/cert_6.jpg" target="_blank" rel="noopener">
+        <span>Радиология баённомаси</span>
+      </div>
+      <div class="cert-card" onclick="openCert('champion-img/cert_6.jpg')">
         <img src="champion-img/cert_6.jpg" alt="Санитария-эпидемиология хулосаси" loading="lazy">
-      </a>
+        <span>Санитария хулосаси</span>
+      </div>
     </div>
+    <p style="text-align:center; color:rgba(255,255,255,0.45); font-size:13px; margin-top:18px;">👆 Сертификатни тўлиқ ўқиш учун устига босинг</p>
   </div>
 </section>
+
+<!-- SERTIFIKAT LIGHTBOX -->
+<div class="cert-lightbox" id="cert-lightbox" onclick="closeCert()">
+  <span class="cert-lightbox-close" onclick="closeCert()">×</span>
+  <img id="cert-lightbox-img" src="" alt="Сертификат">
+</div>
 
 <!-- COMPARISON -->
 <section class="comparison-sec">
@@ -977,6 +1022,8 @@
       <h2>Буюртма бериш</h2>
       <p class="lead">Маълумотларингизни қолдиринг — оператор 15 дақиқа ичида қўнғироқ қилади ва тасдиқлайди.</p>
       <div id="form-body">
+        <img src="champion-img/product1.jpg" alt="CHAMPION by Twin" loading="lazy"
+             style="display:block; width:150px; margin:0 auto 26px; border-radius:14px; box-shadow:0 10px 28px rgba(0,0,0,0.18); border:1px solid rgba(212,160,23,0.25);">
         <div class="form-group">
           <label>Исмингиз *</label>
           <input type="text" id="f-name" placeholder="Масалан: Акбар" required>
@@ -1136,6 +1183,19 @@ function toggleFaq(el) {
   document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
   if (!isOpen) item.classList.add('open');
 }
+
+// ── SERTIFIKAT LIGHTBOX ──
+function openCert(src) {
+  const box = document.getElementById('cert-lightbox');
+  document.getElementById('cert-lightbox-img').src = src;
+  box.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeCert() {
+  document.getElementById('cert-lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCert(); });
 
 // ── UTM METKALARI ── (URL'dan olib, localStorage'da saqlaymiz)
 const UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
