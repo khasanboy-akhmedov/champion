@@ -784,7 +784,7 @@
     <div class="product-inner">
       <div class="product-img-wrap fade-up">
         <div class="product-mockup">
-          <img src="champion-img/doctor_product_web.jpg" alt="CHAMPION by Twin mahsuloti" loading="lazy">
+          <img src="champion-img/doctor.jpg" alt="CHAMPION by Twin mahsuloti" loading="lazy">
         </div>
       </div>
       <div class="product-content fade-up">
@@ -861,9 +861,7 @@
       <span class="section-badge dark">Махсулот ва сертификатлар</span>
     </div>
     <h2 style="color:#fff; text-align:center; margin-bottom:8px;">CHAMPION by Twin</h2>
-    <p style="text-align:center; color:rgba(255,255,255,0.5); margin-bottom:0; font-size:15px;">Methylcellulose халол капсуласи • ХАЛОЛ</p>
-    <!-- 1 ta mahsulot rasmi -->
-    <img class="showcase-product" src="champion-img/product1.jpg" alt="CHAMPION by Twin маҳсулоти" loading="lazy">
+    <p style="text-align:center; color:rgba(255,255,255,0.5); margin-bottom:15px; font-size:15px;">Methylcellulose халол капсуласи • ХАЛОЛ</p>
     <!-- 3 ta sertifikat (bosilganда тўлиқ экранда очилади) -->
     <div class="cert-grid">
       <div class="cert-card" onclick="openCert('champion-img/cert_halal.jpg')">
@@ -1011,6 +1009,75 @@
       <div class="g-item"><span class="g-icon">📦</span>Бепул етказиб бериш</div>
       <div class="g-item"><span class="g-icon">🔒</span>Тўлиқ аноним</div>
       <div class="g-item"><span class="g-icon">📞</span>15 дақиқада қўнғироқ</div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIO SHARHLAR (carousel) -->
+<style>
+  .audio-sec { background: var(--bg-dark2); }
+  .audio-carousel { max-width: 560px; margin: 36px auto 0; position: relative; overflow: hidden; }
+  .audio-track { display: flex; transition: transform 0.4s ease; }
+  .audio-slide { min-width: 100%; padding: 6px; }
+  .audio-card {
+    background: linear-gradient(145deg, #12162e, #0c0f22);
+    border: 1px solid rgba(212,160,23,0.25);
+    border-radius: 18px; padding: 28px 22px; text-align: center;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  }
+  .audio-avatar {
+    width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 14px;
+    background: var(--gold); display: flex; align-items: center; justify-content: center;
+    font-size: 30px;
+  }
+  .audio-name { color: #fff; font-size: 18px; font-weight: 700; }
+  .audio-age { color: var(--accent2); font-size: 14px; margin-top: 3px; margin-bottom: 20px; }
+  .audio-card audio { width: 100%; }
+  .audio-nav { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 24px; }
+  .audio-btn {
+    width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+    border: 1px solid rgba(212,160,23,0.4); background: rgba(212,160,23,0.12);
+    color: var(--accent2); font-size: 22px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; transition: background 0.2s;
+  }
+  .audio-btn:hover { background: rgba(212,160,23,0.25); }
+  .audio-dots { display: flex; gap: 8px; align-items: center; }
+  .audio-dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.25); cursor: pointer; transition: background 0.2s; }
+  .audio-dot.active { background: var(--accent2); }
+</style>
+<section class="audio-sec">
+  <div class="container">
+    <div style="text-align:center;">
+      <span class="section-badge dark">Аудио шарҳлар</span>
+      <h2 style="color:#fff; margin-bottom:8px;">Мижозларимиз фикри</h2>
+      <p style="color:rgba(255,255,255,0.5); font-size:15px;">Ҳақиқий мижозларнинг аудио шарҳлари</p>
+    </div>
+    <div class="audio-carousel">
+      <div class="audio-track" id="audio-track">
+        <!-- Slide 1 — ISM va YOSH ni shu yerga yozing -->
+        <div class="audio-slide">
+          <div class="audio-card">
+            <div class="audio-avatar">🎧</div>
+            <div class="audio-name">Мижоз 1</div>
+            <div class="audio-age">— ёш</div>
+            <audio controls preload="metadata" src="champion-audio/review1.mp3"></audio>
+          </div>
+        </div>
+        <!-- Slide 2 — ISM va YOSH ni shu yerga yozing -->
+        <div class="audio-slide">
+          <div class="audio-card">
+            <div class="audio-avatar">🎧</div>
+            <div class="audio-name">Мижоз 2</div>
+            <div class="audio-age">— ёш</div>
+            <audio controls preload="metadata" src="champion-audio/review2.mp3"></audio>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="audio-nav">
+      <button class="audio-btn" onclick="audioMove(-1)" aria-label="Олдинги">‹</button>
+      <div class="audio-dots" id="audio-dots"></div>
+      <button class="audio-btn" onclick="audioMove(1)" aria-label="Кейинги">›</button>
     </div>
   </div>
 </section>
@@ -1196,6 +1263,29 @@ function closeCert() {
   document.body.style.overflow = '';
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCert(); });
+
+// ── AUDIO SHARHLAR CAROUSEL ──
+(function() {
+  const track = document.getElementById('audio-track');
+  if (!track) return;
+  const total = track.children.length;
+  let idx = 0;
+  const dotsWrap = document.getElementById('audio-dots');
+  for (let i = 0; i < total; i++) {
+    const d = document.createElement('span');
+    d.className = 'audio-dot' + (i === 0 ? ' active' : '');
+    d.addEventListener('click', () => audioGo(i));
+    dotsWrap.appendChild(d);
+  }
+  window.audioGo = function(i) {
+    idx = (i + total) % total;
+    track.style.transform = 'translateX(' + (-idx * 100) + '%)';
+    [...dotsWrap.children].forEach((d, j) => d.classList.toggle('active', j === idx));
+    // Boshqa audiolarni to'xtatish
+    track.querySelectorAll('audio').forEach((a, j) => { if (j !== idx) a.pause(); });
+  };
+  window.audioMove = function(dir) { audioGo(idx + dir); };
+})();
 
 // ── UTM METKALARI ── (URL'dan olib, localStorage'da saqlaymiz)
 const UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
