@@ -1374,7 +1374,9 @@ async function submitForm() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, phone, region, utm: getUtm(), pageUrl: location.href })
     });
-    if (!r.ok) throw new Error('send failed');
+    const data = await r.json().catch(() => ({}));
+    // Faqat server lidni haqiqatan qabul qilса (ok:true) muvaffaqiyatli deб hisoblaymiz
+    if (!r.ok || data.ok !== true) throw new Error('send failed');
   } catch(e) {
     btn.disabled = false;
     btn.textContent = '50% чегирма билан буюртма бериш →';
@@ -1382,6 +1384,7 @@ async function submitForm() {
     return;
   }
 
+  // Lid faqat muvaffaqiyatli jo'natilganda — Meta Pixel Lead
   if (typeof fbq !== 'undefined') fbq('track', 'Lead');
   document.getElementById('form-body').style.display = 'none';
   document.getElementById('form-success').style.display = 'block';
