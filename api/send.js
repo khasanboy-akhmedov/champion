@@ -80,12 +80,21 @@ export default async function handler(req, res) {
       COMMENTS: comments,                                // Saytdagi barcha ma'lumotlar
     };
 
+    // Kanban ustuni (bosqich): ТАРГЕТ Champion. .env da berilsa qo'shiladi.
+    if (process.env.BITRIX_STATUS_ID) fields.STATUS_ID = process.env.BITRIX_STATUS_ID;
+
+    // "Offer ID" maxsus maydoni (ro'yxat): Champion = enum ID 251
+    fields.UF_CRM_LEAD_1771579515088 = 251;
+
     // UTM metkalari — Bitrix native maydonlari
     if (utm.utm_source)   fields.UTM_SOURCE   = utm.utm_source;
     if (utm.utm_medium)   fields.UTM_MEDIUM   = utm.utm_medium;
     if (utm.utm_campaign) fields.UTM_CAMPAIGN = utm.utm_campaign;
     if (utm.utm_content)  fields.UTM_CONTENT  = utm.utm_content;
     if (utm.utm_term)     fields.UTM_TERM     = utm.utm_term;
+
+    // "UTM" maxsus matn maydoni — barcha utm birlashtirilgan holda
+    if (utmLines.length) fields.UF_CRM_1771335423930 = utmLines.join(' | ');
 
     const r = await fetch(`${base}crm.lead.add.json`, {
       method: 'POST',
