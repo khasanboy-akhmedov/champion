@@ -11,32 +11,32 @@ export default async function handler(req, res) {
 
   const { name, phone, region, utm = {}, pageUrl } = req.body || {};
  //тест
-  const requests = global.requests || new Map();
-global.requests = requests;
-// if (!name || !phone) {
-//   return res.status(400).json({ error: 'Missing fields' });
+//   const requests = global.requests || new Map();
+// global.requests = requests;
+// // if (!name || !phone) {
+// //   return res.status(400).json({ error: 'Missing fields' });
+// // }
+// // Защита от повторной отправки (15 секунд)
+// const ip =
+//   req.headers['x-forwarded-for']?.split(',')[0] ||
+//   req.socket.remoteAddress ||
+//   'unknown';
+
+// const key = `${ip}_${phone}`;
+// const now = Date.now();
+
+// if (requests.has(key) && now - requests.get(key) < 15000) {
+//   return res.status(429).json({
+//     ok: false,
+//     error: 'Подождите 10 секунд перед повторной отправкой.'
+//   });
 // }
-// Защита от повторной отправки (15 секунд)
-const ip =
-  req.headers['x-forwarded-for']?.split(',')[0] ||
-  req.socket.remoteAddress ||
-  'unknown';
 
-const key = `${ip}_${phone}`;
-const now = Date.now();
+// requests.set(key, now);
 
-if (requests.has(key) && now - requests.get(key) < 15000) {
-  return res.status(429).json({
-    ok: false,
-    error: 'Подождите 10 секунд перед повторной отправкой.'
-  });
-}
-
-requests.set(key, now);
-
-setTimeout(() => {
-  requests.delete(key);
-}, 15000);
+// setTimeout(() => {
+//   requests.delete(key);
+// }, 15000);
   //тест
   
 
