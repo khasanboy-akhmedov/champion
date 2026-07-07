@@ -1247,7 +1247,6 @@ src="https://www.facebook.com/tr?id=880322235133776&ev=PageView&noscript=1"
 // ── COUNTDOWN TIMER ──
 (function() {
   let end = Date.now() + 55 * 60 * 1000; // 55 min from load
-  // Persist across reloads
   const stored = localStorage.getItem('champion_end');
   if (stored && Number(stored) > Date.now()) {
     end = Number(stored);
@@ -1265,7 +1264,6 @@ src="https://www.facebook.com/tr?id=880322235133776&ev=PageView&noscript=1"
     document.getElementById('t-m').textContent = pad(m);
     document.getElementById('t-s').textContent = pad(s);
     if (diff === 0) {
-      // Reset for urgency
       const newEnd = Date.now() + 55 * 60 * 1000;
       localStorage.setItem('champion_end', newEnd);
       end = newEnd;
@@ -1298,7 +1296,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCert();
 
 // ── OVOZLI XABAR (waveform) PLEERI ──
 (function() {
-  const N = 32; // to'lqin ustunlari soni
+  const N = 32;
   function fmt(t) {
     if (!isFinite(t) || t < 0) t = 0;
     const m = Math.floor(t / 60), s = Math.floor(t % 60);
@@ -1310,7 +1308,6 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCert();
     const wave = vp.querySelector('.vp-wave');
     const timeEl = vp.querySelector('.vp-time');
 
-    // To'lqin ustunlarini yaratish (tabiiy ko'rinish uchun turli balandlik)
     for (let i = 0; i < N; i++) {
       const h = 22 + Math.round(Math.abs(Math.sin(i * 1.3) * 45) + Math.abs(Math.cos(i * 0.7) * 25));
       const bar = document.createElement('span');
@@ -1342,7 +1339,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCert();
   });
 })();
 
-// ── UTM METKALARI ── (URL'dan olib, localStorage'da saqlaymiz)
+// ── UTM METKALARI ──
 const UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
 (function captureUtm() {
   const p = new URLSearchParams(location.search);
@@ -1355,13 +1352,41 @@ function getUtm() {
   try { return JSON.parse(localStorage.getItem('champion_utm') || '{}'); }
   catch(e) { return {}; }
 }
-  // Lid faqat muvaffaqiyatli jo'natilganda — Meta Pixel Lead
+
+// ── FORM SUBMIT ── (kalitlar serverda — /api/send)
+async function submitForm() {
+  const name   = document.getElementById('f-name').value.trim();
+  const phone  = document.getElementById('f-phone').value.trim();
+  const region = document.getElementById('f-region').value;
+
+  if (!name)  { alert('Исмингизни киритинг'); return; }
+  if (!phone || phone.length < 9) { alert('Телефон рақамингизни киритинг'); return; }
+
+  const btn = document.querySelector('.form-submit');
+  btn.disabled = true;
+  btn.textContent = 'Юборилмоқда...';
+
+  try {
+    const r = await fetch('/api/send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, phone, region, utm: getUtm(), pageUrl: location.href })
+    });
+    const data = await r.json().catch(() => ({}));
+    if (!r.ok || data.ok !== true) throw new Error('send failed');
+  } catch(e) {
+    btn.disabled = false;
+    btn.textContent = '50% чегирма билан буюртма бериш →';
+    alert('Хатолик юз берди. Яна уриниб кўринг.');
+    return;
+  }
+
   if (typeof fbq !== 'undefined') fbq('track', 'Lead');
   document.getElementById('form-body').style.display = 'none';
   document.getElementById('form-success').style.display = 'block';
 }
 
-  // ── КНОПКАНИ САЙТ ОЧИЛГАНДА 15 СЕКУНДГА БЛОКЛАШ ──
+// ── КНОПКАНИ САЙТ ОЧИЛГАНДА 15 СЕКУНДГА БЛОКЛАШ ──
 (function() {
   const btn = document.getElementById('form-submit');
   const originalText = '50% чегирма билан буюртма бериш →';
