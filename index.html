@@ -1150,7 +1150,8 @@ src="https://www.facebook.com/tr?id=880322235133776&ev=PageView&noscript=1"
             <option>Қорақалпоғистон</option>
           </select>
         </div>
-        <button id="form-submit" class="form-submit" onclick="submitForm()">50% чегирма билан буюртма бериш →</button>
+        <!-- <button id="form-submit" class="form-submit" onclick="submitForm()">50% чегирма билан буюртма бериш →</button> -->
+        <button id="form-submit" class="form-submit" onclick="submitForm()" disabled>Тайёрланмоқда... (15)</button>
         <p class="form-privacy">🔒 Маълумотларингиз учинчи шахсларга берилмайди</p>
       </div>
       <div class="form-success" id="form-success">
@@ -1354,41 +1355,29 @@ function getUtm() {
   try { return JSON.parse(localStorage.getItem('champion_utm') || '{}'); }
   catch(e) { return {}; }
 }
-
-// ── FORM SUBMIT ── (kalitlar serverda — /api/send)
-async function submitForm() {
-  const name   = document.getElementById('f-name').value.trim();
-  const phone  = document.getElementById('f-phone').value.trim();
-  const region = document.getElementById('f-region').value;
-
-  if (!name)  { alert('Исмингизни киритинг'); return; }
-  if (!phone || phone.length < 9) { alert('Телефон рақамингизни киритинг'); return; }
-
-  const btn = document.querySelector('.form-submit');
-  btn.disabled = true;
-  btn.textContent = 'Юборилмоқда...';
-
-  try {
-    const r = await fetch('/api/send', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, phone, region, utm: getUtm(), pageUrl: location.href })
-    });
-    const data = await r.json().catch(() => ({}));
-    // Faqat server lidni haqiqatan qabul qilса (ok:true) muvaffaqiyatli deб hisoblaymiz
-    if (!r.ok || data.ok !== true) throw new Error('send failed');
-  } catch(e) {
-    btn.disabled = false;
-    btn.textContent = '50% чегирма билан буюртма бериш →';
-    alert('Хатолик юз берди. Яна уриниб кўринг.');
-    return;
-  }
-
   // Lid faqat muvaffaqiyatli jo'natilganda — Meta Pixel Lead
   if (typeof fbq !== 'undefined') fbq('track', 'Lead');
   document.getElementById('form-body').style.display = 'none';
   document.getElementById('form-success').style.display = 'block';
 }
+
+  // ── КНОПКАНИ САЙТ ОЧИЛГАНДА 15 СЕКУНДГА БЛОКЛАШ ──
+(function() {
+  const btn = document.getElementById('form-submit');
+  const originalText = '50% чегирма билан буюртма бериш →';
+  let seconds = 15;
+
+  const timer = setInterval(() => {
+    seconds--;
+    if (seconds > 0) {
+      btn.textContent = `Тайёрланмоқда... (${seconds})`;
+    } else {
+      clearInterval(timer);
+      btn.disabled = false;
+      btn.textContent = originalText;
+    }
+  }, 1000);
+})();
 
 // ── FADE-UP ON SCROLL ──
 const fadeEls = document.querySelectorAll('.fade-up');
@@ -1410,20 +1399,6 @@ if (phoneInput) {
   });
 }
 </script>
-  <script>
-  const btn = document.getElementById('form-submit');
-  let seconds = 15;
-
-  const timer = setInterval(() => {
-    seconds--;
-    if (seconds > 0) {
-      btn.textContent = `Отправить (подождите ${seconds} сек...)`;
-    } else {
-      clearInterval(timer);
-      btn.disabled = false;
-      btn.textContent = 'Отправить';
-    }
-  }, 1000);
-</script>
+ 
 </body>
 </html>
