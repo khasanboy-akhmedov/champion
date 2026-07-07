@@ -1150,7 +1150,7 @@ src="https://www.facebook.com/tr?id=880322235133776&ev=PageView&noscript=1"
             <option>Қорақалпоғистон</option>
           </select>
         </div>
-        <button class="form-submit" onclick="submitForm()">50% чегирма билан буюртма бериш →</button>
+        <button id="form-submit" class="form-submit" onclick="submitForm()">50% чегирма билан буюртма бериш →</button>
         <p class="form-privacy">🔒 Маълумотларингиз учинчи шахсларга берилмайди</p>
       </div>
       <div class="form-success" id="form-success">
@@ -1409,6 +1409,21 @@ if (phoneInput) {
     this.value = val;
   });
 }
+</script>
+  <script>
+  const btn = document.getElementById('form-submit');
+  let seconds = 15;
+
+  const timer = setInterval(() => {
+    seconds--;
+    if (seconds > 0) {
+      btn.textContent = `Отправить (подождите ${seconds} сек...)`;
+    } else {
+      clearInterval(timer);
+      btn.disabled = false;
+      btn.textContent = 'Отправить';
+    }
+  }, 1000);
 </script>
 </body>
 </html>
