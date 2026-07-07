@@ -1,10 +1,38 @@
+
 export default async function handler(req, res) {
+  
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+  const requests = global.requests || new Map();
+global.requests = requests;
+if (!name || !phone) {
+  return res.status(400).json({ error: 'Missing fields' });
+}
+// Защита от повторной отправки (15 секунд)
+const ip =
+  req.headers['x-forwarded-for']?.split(',')[0] ||
+  req.socket.remoteAddress ||
+  'unknown';
+
+const key = `${ip}_${phone}`;
+const now = Date.now();
+
+if (requests.has(key) && now - requests.get(key) < 10000) {
+  return res.status(429).json({
+    ok: false,
+    error: 'Подождите 10 секунд перед повторной отправкой.'
+  });
+}
+
+requests.set(key, now);
+
+setTimeout(() => {
+  requests.delete(key);
+}, 15000);
 
   const { name, phone, region, utm = {}, pageUrl } = req.body || {};
 
