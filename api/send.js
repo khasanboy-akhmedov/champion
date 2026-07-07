@@ -7,6 +7,10 @@ export default async function handler(req, res) {
 
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+
+
+  const { name, phone, region, utm = {}, pageUrl } = req.body || {};
+ //тест
   const requests = global.requests || new Map();
 global.requests = requests;
 if (!name || !phone) {
@@ -33,8 +37,8 @@ requests.set(key, now);
 setTimeout(() => {
   requests.delete(key);
 }, 15000);
-
-  const { name, phone, region, utm = {}, pageUrl } = req.body || {};
+  //тест
+  
 
   if (!name || !phone) {
     return res.status(400).json({ error: 'Missing fields' });
